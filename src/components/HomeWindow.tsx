@@ -19,12 +19,21 @@ function HomeWindow() {
     }
     useEffect(() => {
         document.title = "Hours Calculator";
+        console.log(timeObj);
+        
         const fetchData = async () => {
             await fetch('http://localhost:8080/api/hours', {
                 method: "POST",
                 body: JSON.stringify(timeObj),
+                headers: {
+                    "Content-Type": "application/json"
+                }
             })
-            .then((response) => response.json())
+            .then((response) => {
+                console.log(response.json()
+            );
+                
+            })
             .then((data) => {
                 console.log("Fetched data:", data);
             })
